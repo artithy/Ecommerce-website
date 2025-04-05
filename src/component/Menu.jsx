@@ -18,31 +18,33 @@ export default function TopMenu() {
     const location = useLocation();
 
     return (
-        <div className="w-full ">
-            <nav className="bg-white border-b-2 w-full border-gray-300 text-white p-4 flex justify-between items-center max-w-screen-xl mx-auto">
-                <div className="text-xl font-semibold text-black">Exclusive</div>
+        <div className="w-full">
+            <nav className="bg-white border-b-2 w-full border-gray-300 text-white p-4 flex justify-between items-center">
+                <div className="container flex justify-between items-center">
+                    <div className="text-xl font-semibold text-black">Exclusive</div>
 
-                <ul className="flex space-x-4 text-md">
-                    <NavItem label="Home" to="/" isActive={active === "/"} setActive={setActive} />
-                    <NavItem label="Contact" to="/contact" isActive={active === "/contact"} setActive={setActive} />
-                    <NavItem label="About" to="/about" isActive={active === "/about"} setActive={setActive} />
-                    <NavItem label="Signup" to="/signup" isActive={active === "/signup"} setActive={setActive} />
-                </ul>
+                    <ul className="flex space-x-4 text-md">
+                        <NavItem label="Home" to="/" isActive={active === "/"} setActive={setActive} />
+                        <NavItem label="Contact" to="/contact" isActive={active === "/contact"} setActive={setActive} />
+                        <NavItem label="About" to="/about" isActive={active === "/about"} setActive={setActive} />
+                        <NavItem label="Signup" to="/signup" isActive={active === "/signup"} setActive={setActive} />
+                    </ul>
 
-                <div className="flex items-center space-x-4 relative">
-                    <SearchBar />
-                    {location.pathname !== "/signup" && location.pathname !== "/login" && (
-                        <>
-                            <IconButton icon={<Heart />} to="/wishlist" />
-                            <IconButton icon={<ShoppingCart />} to="/cart" />
-                            <button
-                                className={`p-2 rounded-full transition-colors ${showUserMenu ? "bg-red-500 text-white" : "text-gray-700"}`}
-                                onClick={() => setShowUserMenu(!showUserMenu)}
-                            >
-                                <User />
-                            </button>
-                        </>
-                    )}
+                    <div className="flex items-center space-x-4 relative">
+                        <SearchBar />
+                        {location.pathname !== "/signup" && location.pathname !== "/login" && (
+                            <>
+                                <IconButton icon={<Heart />} to="/wishlist" />
+                                <IconButton icon={<ShoppingCart />} to="/cart" />
+                                <button
+                                    className={`p-2 rounded-full transition-colors ${showUserMenu ? "bg-red-500 text-white" : "text-gray-700"}`}
+                                    onClick={() => setShowUserMenu(!showUserMenu)}
+                                >
+                                    <User />
+                                </button>
+                            </>
+                        )}
+                    </div>
                 </div>
             </nav>
             {showUserMenu && <UserMenu setShowUserMenu={setShowUserMenu} />}
